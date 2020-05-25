@@ -33,14 +33,10 @@ app.post("/", function(request, response){
 });
 
 
-app.listen(3000, function(){
-    console.log("server started on port 3000");
-    sgMail.send(msg, function(err){
-        if (err)
-            console.log(err);
-        else{
-            console.log("sent");
-        }
-    });
-    
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port, function(){
+    console.log("Server started successfully");
 });
